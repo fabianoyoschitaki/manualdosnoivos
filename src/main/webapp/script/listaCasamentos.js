@@ -28,7 +28,9 @@
 				casamento.casal = $(this).text();
 				casamentos.push(casamento);
 			});
-			$scope.casamentos = casamentos;
+			$scope.$apply(function () {
+				$scope.casamentos = casamentos;
+			});
 		});
 		responsePromise.error(function(data, status, headers, config) {
 			console.log(data);
