@@ -2,12 +2,12 @@
 	var app = angular.module('listaCasamento', []);
 
 	app.controller('CasamentoController', function($scope, $http){
-		this.casamentos = getListaCasamentos($http);
+		this.casamentos = getListaCasamentos($scope, $http);
 		
 	});
 	
 	
-	function getListaCasamentos($http){
+	function getListaCasamentos($scope, $http){
 		var casamentos = [];
 		
 		var soap = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.manualdosnoivos.com.br/\">"+
@@ -19,23 +19,17 @@
 					   "</soapenv:Body>"+
 					"</soapenv:Envelope>";
 		
-		// var xhr = $.ajax({
-			// url: "http://manualdosnoivos-manualdosnoivos.rhcloud.com:80/Casamento",
-			// type: "POST",
-			// data: soap,
-			// timeout: 15000,
-			// //dataType: "text",
-			// contentType: "text/xml;charset=UTF-8;SOAPAction=\"\"",
-			// success: function(data) {
-			// },
-			// error: function(data) {
-			// }
-		// });
-		
 		var responsePromise = $http.post("http://manualdosnoivos-manualdosnoivos.rhcloud.com:80/Casamento",soap);
 
 		responsePromise.success(function(data, status, headers, config) {
-			console.log(data);
+			var xml = $.parseXML(data);
+			var casamentos = [];
+			$("casamento", xml).each(function(){
+				var casamento;
+				casamento.casal = $(this).text();
+				casamentos.push(casamento);
+			});
+			$scope.casamentos = casamentos;
 		});
 		responsePromise.error(function(data, status, headers, config) {
 			console.log(data);
