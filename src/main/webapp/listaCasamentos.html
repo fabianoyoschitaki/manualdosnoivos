@@ -9,6 +9,8 @@
 	<script src="script/listaCasamentos.js"></script>
   </head>
   <body ng-controller="CasamentoController as casamento">
-	<h1>{{casamento.casamento}}</h1>
+	<div ng-repeat="casamento in casamento.casamentos">
+		<h3><b>Casal: </b>{{casamento.casal}}</h3>
+	</div>
   </body>
 </html>
