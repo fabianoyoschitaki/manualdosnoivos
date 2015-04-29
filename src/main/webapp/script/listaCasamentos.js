@@ -25,7 +25,7 @@
 			var xml = $.parseXML(data);
 			var casamentos = [];
 			$("casamento", xml).each(function(){
-				var casamento;
+				var casamento = {};
 				casamento.casal = $(this).text();
 				casamentos.push(casamento);
 			});
