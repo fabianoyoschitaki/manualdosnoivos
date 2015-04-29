@@ -16,7 +16,7 @@ import javax.jws.WebService;
  * @author fabiano
  *
  */
-@WebService
+@WebService()
 public class Casamento {
 	@WebMethod(operationName="listarCasamentos")
 	public @WebResult(name="casamento")
