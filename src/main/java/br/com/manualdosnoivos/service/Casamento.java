@@ -11,7 +11,7 @@ import javax.jws.WebService;
 /**
  * Exemplo WebService SOAP com JAX-WS
  * 
- * http://servidor/Casamento?WSDL
+ * http://manualdosnoivos-manualdosnoivos.rhcloud.com/services/Casamento?WSDL
  * 
  * @author fabiano
  *

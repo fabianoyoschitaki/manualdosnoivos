@@ -14,7 +14,7 @@ import br.com.manualdosnoivos.common.ServicoCasamento;
 /**
  * Exemplo WebService RESTful com JAX-RS
  * 
- * http://servidor/servicoscasamento
+ * http://manualdosnoivos-manualdosnoivos.rhcloud.com/rest/servicoscasamento/servicos
  * 
  * @author fabiano
  *

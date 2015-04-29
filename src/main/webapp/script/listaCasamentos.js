@@ -13,7 +13,7 @@
 					   "</soapenv:Body>"+
 					"</soapenv:Envelope>";
 		
-		var responsePromise = $http.post("http://manualdosnoivos-manualdosnoivos.rhcloud.com:80/Casamento",soap);
+		var responsePromise = $http.post("http://manualdosnoivos-manualdosnoivos.rhcloud.com:80/services/Casamento",soap);
 
 		responsePromise.success(function(data, status, headers, config) {
 			var xml = $.parseXML(data);
