@@ -3,11 +3,6 @@
 
 	app.controller('CasamentoController', function($scope, $http){
 		this.casamentos = [];
-		getListaCasamentos($scope, $http);
-	});
-	
-	
-	function getListaCasamentos($scope, $http){
 		
 		var soap = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.manualdosnoivos.com.br/\">"+
 					   "<soapenv:Header/>"+
@@ -35,5 +30,11 @@
 		responsePromise.error(function(data, status, headers, config) {
 			console.log(data);
 		});
+	});
+	
+	
+	function getListaCasamentos($scope, $http){
+		
+		
 	}
 })()
