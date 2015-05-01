@@ -27,7 +27,8 @@ public class MongoDBTest {
 	private static final String DATABASE = "manualdosnoivos";
 	private static final String USER = "admin";
 	private static final String PASSWORD = "MWxQNVpaUjAw";
-	private static final String CONNECTION_URL = "mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/manualdosnoivos";
+	private static final String CONNECTION_URL = 
+		"mongodb://[admin:MWxQNVpaUjAw]localhost:27017/manualdosnoivos";
 	
 	//conexão
 	private static ServerAddress serverAddress = new ServerAddress(CONNECTION_URL);
