@@ -24,7 +24,8 @@ public class MongoDBTest {
 	private static final String DATABASE = "manualdosnoivos";
 	private static final String USER = "admin";
 	private static final String PASSWORD = "5c4wst3DGsRv";
-	private static final String CONNECTION_URL = "mongodb://admin:5c4wst3DGsRv@$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/";
+	private static final String CONNECTION_URL = 
+		"mongodb://$OPENSHIFT_MONGODB_DB_USERNAME:$OPENSHIFT_MONGODB_DB_PASSWORD@$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/";
 
 	private static MongoCredential credential = MongoCredential
 			.createCredential(USER, DATABASE, PASSWORD.toCharArray());
@@ -32,8 +33,8 @@ public class MongoDBTest {
 	public static String getCasamentos() {
 		StringBuffer retorno = new StringBuffer();
 		try {
-			retorno.append("MongoClient...");
-			MongoClient mongoClient = new MongoClient(CONNECTION_URL);
+			retorno.append("MongoClient.");
+			MongoClient mongoClient = new MongoClient(new MongoClientURI(CONNECTION_URL)s);
 			retorno.append("\nMongoClient generated");
 			DB db = mongoClient.getDB(DATABASE);
 			retorno.append("\nConnect to database successfully");
