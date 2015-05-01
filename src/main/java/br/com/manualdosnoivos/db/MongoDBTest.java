@@ -7,6 +7,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 
@@ -26,7 +27,7 @@ public class MongoDBTest {
 	private static final String DATABASE = "manualdosnoivos";
 	private static final String USER = "admin";
 	private static final String PASSWORD = "MWxQNVpaUjAw";
-	private static final String CONNECTION_URL = "mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/";
+	private static final String CONNECTION_URL = "mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/manualdosnoivos";
 	
 	//conexão
 	private static ServerAddress serverAddress = new ServerAddress(CONNECTION_URL);
@@ -37,10 +38,12 @@ public class MongoDBTest {
 		StringBuffer retorno = new StringBuffer();
 		try {
 			retorno.append("MongoClient..");
-			MongoClient mongoClient = 
-				new MongoClient(serverAddress, credentials);
-			retorno.append("\nMongoClient generated");
-			DB db = mongoClient.getDB(DATABASE);
+			// Standard URI format: mongodb://[dbuser:dbpassword@]host:port/dbname
+		       
+	        MongoClientURI uri  = new MongoClientURI(CONNECTION_URL); 
+	        MongoClient client = new MongoClient(uri);
+	        retorno.append("\nMongoClient generated");
+	        DB db = client.getDB(uri.getDatabase());
 			retorno.append("\nConnect to database successfully");
 			
 			DBCollection casamento = db.getCollection("casamentos");
@@ -51,7 +54,7 @@ public class MongoDBTest {
 	            append("custo", 21000);
 			casamento.insert(doc);
 			retorno.append("\nok");
-			mongoClient.close();
+			client.close();
 		} catch (Exception e) {
 			retorno.append("\n" + e.getClass().getName() + ": " + e.getMessage());
 		}
