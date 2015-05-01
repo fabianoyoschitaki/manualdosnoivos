@@ -24,14 +24,13 @@ public class MongoDBTest {
 	private static final String DATABASE = "manualdosnoivos";
 	private static final String USER = "admin";
 	private static final String PASSWORD = "5c4wst3DGsRv";
-	private static final String CONNECTION_URL = 
-		"mongodb://$OPENSHIFT_MONGODB_DB_USERNAME:$OPENSHIFT_MONGODB_DB_PASSWORD@$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/";
+	private static final String OPENSHIFT_MONGODB_DB_URL = "mongodb://admin:5c4wst3DGsRv@127.4.173.130:27017/";
 
 	public static String getCasamentos() {
 		StringBuffer retorno = new StringBuffer();
 		try {
-			retorno.append("MongoClient.");
-			MongoClient mongoClient = new MongoClient(new MongoClientURI(CONNECTION_URL));
+			retorno.append("MongoClient xD");
+			MongoClient mongoClient = new MongoClient("127.4.173.130", 27017);
 			retorno.append("\nMongoClient generated");
 			DB db = mongoClient.getDB(DATABASE);
 			retorno.append("\nConnect to database successfully");
