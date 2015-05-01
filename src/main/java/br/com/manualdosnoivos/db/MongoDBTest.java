@@ -1,11 +1,14 @@
 package br.com.manualdosnoivos.db;
 
+import java.util.Arrays;
+import java.util.List;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
 import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
 
 /**
  * Teste mongoDB no openshit
@@ -24,22 +27,24 @@ public class MongoDBTest {
 	private static final String USER = "admin";
 	private static final String PASSWORD = "MWxQNVpaUjAw";
 	private static final String CONNECTION_URL = "mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/";
-
-	private static MongoCredential credential = MongoCredential
-			.createCredential(USER, DATABASE, PASSWORD.toCharArray());
+	
+	//conexão
+	private static ServerAddress serverAddress = new ServerAddress(CONNECTION_URL);
+	private static List<MongoCredential> credentials = Arrays.asList(MongoCredential
+			.createCredential(USER, DATABASE, PASSWORD.toCharArray()));
 
 	public static String getCasamentos() {
 		StringBuffer retorno = new StringBuffer();
 		try {
-			retorno.append("MongoClient.");
-			MongoClient mongoClient = new MongoClient("$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT");
+			retorno.append("MongoClient..");
+			MongoClient mongoClient = 
+				new MongoClient(serverAddress, credentials);
 			retorno.append("\nMongoClient generated");
 			DB db = mongoClient.getDB(DATABASE);
 			retorno.append("\nConnect to database successfully");
 			
 			DBCollection casamento = db.getCollection("casamentos");
 			retorno.append("\nCollection created successfully");
-			//TODO dando pau aqui
 			BasicDBObject doc = new BasicDBObject("data", "10/10/2015").
 	            append("noivo", "João").
 	            append("noiva", "Maria").
