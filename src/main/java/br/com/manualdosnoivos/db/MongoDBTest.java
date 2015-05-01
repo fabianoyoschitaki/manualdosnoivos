@@ -26,14 +26,15 @@ public class MongoDBTest {
 
 	//private static final String SERVER = "127.4.173.130";
 	//private static final int PORT = 27017;
-	private static final String DATABASE = "manualdosnoivos";
-	private static final String URL_MONGO_DB = "OPENSHIFT_MONGODB_DB_URL";
 	//private static final String USER = "admin";
 	//private static final String PASSWORD = "5c4wst3DGsRv";
 	//private static final String OPENSHIFT_MONGODB_DB_URL = "mongodb://admin:5c4wst3DGsRv@127.4.173.130:27017/";
 	
 	//private static final MongoCredential CREDENTIAL = MongoCredential.createCredential(USER, DATABASE, PASSWORD.toCharArray());
 	//private static final ServerAddress SERVER_ADDRESS = new ServerAddress(SERVER, PORT);
+	
+	private static final String DATABASE = "manualdosnoivos";
+	private static final String URL_MONGO_DB = "OPENSHIFT_MONGODB_DB_URL";
 	
 	public static String getCasamentos() {
 		StringBuffer retorno = new StringBuffer();
@@ -47,7 +48,6 @@ public class MongoDBTest {
 			
 			DBCollection casamento = db.getCollection("casamentos");
 			retorno.append("\nCollection created successfully");
-			//TODO dando pau aqui
 			BasicDBObject doc = new BasicDBObject("data", "10/10/2016").
 	            append("noivo", "João").
 	            append("noiva", "Maria").
