@@ -31,8 +31,8 @@ public class MongoDBTest {
 	public static String getCasamentos() {
 		StringBuffer retorno = new StringBuffer();
 		try {
-			retorno.append("MongoClient...");
-			MongoClient mongoClient = new MongoClient("localhost", 27017);
+			retorno.append("MongoClientx...");
+			MongoClient mongoClient = new MongoClient("localhostx", 27017);
 			retorno.append("\nMongoClient generated");
 			DB db = mongoClient.getDB(DATABASE);
 			retorno.append("\nConnect to database successfully");
