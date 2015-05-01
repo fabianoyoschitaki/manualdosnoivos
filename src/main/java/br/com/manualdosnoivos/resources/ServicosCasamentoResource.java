@@ -10,6 +10,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import br.com.manualdosnoivos.common.ServicoCasamento;
+import br.com.manualdosnoivos.db.MongoDBTest;
 
 /**
  * Exemplo WebService RESTful com JAX-RS
@@ -30,6 +31,12 @@ public class ServicosCasamentoResource {
 		Set<ServicoCasamento> retorno = new HashSet<ServicoCasamento>();
 		retorno = getServicosCasamentoMock();
 		return retorno;
+	}
+	
+	@GET
+	@Path("/mongodb")
+	public String getCasamento(){
+		return MongoDBTest.getCasamentos();
 	}
 	
 	@GET
