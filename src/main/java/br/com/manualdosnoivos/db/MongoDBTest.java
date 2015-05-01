@@ -23,9 +23,10 @@ import com.mongodb.ServerAddress;
  */
 public class MongoDBTest {
 
-	private static final String SERVER = "127.4.173.130";
-	private static final int PORT = 27017;
+	//private static final String SERVER = "127.4.173.130";
+	//private static final int PORT = 27017;
 	private static final String DATABASE = "manualdosnoivos";
+	private static final String URL_MONGO_DB = "OPENSHIFT_MONGODB_DB_URL";
 	//private static final String USER = "admin";
 	//private static final String PASSWORD = "5c4wst3DGsRv";
 	//private static final String OPENSHIFT_MONGODB_DB_URL = "mongodb://admin:5c4wst3DGsRv@127.4.173.130:27017/";
@@ -36,9 +37,9 @@ public class MongoDBTest {
 	public static String getCasamentos() {
 		StringBuffer retorno = new StringBuffer();
 		try {
-			retorno.append("MongoClient xDD");
+			retorno.append("MongoClient xDDD");
 			//MongoClient mongoClient = new MongoClient(SERVER_ADDRESS, Arrays.asList(CREDENTIAL));
-			MongoClient mongoClient = new MongoClient(System.getenv("$OPENSHIFT_MONGODB_DB_URL"));
+			MongoClient mongoClient = new MongoClient(System.getenv(URL_MONGO_DB));
 			retorno.append("\nMongoClient generated");
 			DB db = mongoClient.getDB(DATABASE);
 			retorno.append("\nConnect to database successfully");
