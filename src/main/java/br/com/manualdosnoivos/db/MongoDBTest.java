@@ -39,7 +39,12 @@ public class MongoDBTest {
 			
 			DBCollection casamento = db.getCollection("casamentos");
 			retorno.append("\nCollection created successfully");
-			casamento.save(new BasicDBObject("nome", "bla bla bla"));
+			//TODO dando pau aqui
+			BasicDBObject doc = new BasicDBObject("data", "10/10/2015").
+	            append("noivo", "João").
+	            append("noiva", "Maria").
+	            append("custo", 21000);
+			casamento.insert(doc);
 			retorno.append("\nok");
 			mongoClient.close();
 		} catch (Exception e) {
