@@ -6,6 +6,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 
@@ -37,9 +38,9 @@ public class MongoDBTest {
 	public static String getCasamentos() {
 		StringBuffer retorno = new StringBuffer();
 		try {
-			retorno.append("MongoClient xDDD");
+			retorno.append("MongoClient xDDDD");
 			//MongoClient mongoClient = new MongoClient(SERVER_ADDRESS, Arrays.asList(CREDENTIAL));
-			MongoClient mongoClient = new MongoClient(System.getenv(URL_MONGO_DB));
+			MongoClient mongoClient = new MongoClient(new MongoClientURI(System.getenv(URL_MONGO_DB)));
 			retorno.append("\nMongoClient generated");
 			DB db = mongoClient.getDB(DATABASE);
 			retorno.append("\nConnect to database successfully");
