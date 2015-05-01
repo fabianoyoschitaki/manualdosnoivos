@@ -10,10 +10,11 @@ import com.mongodb.MongoCredential;
 /**
  * Teste mongoDB no openshit
  * 
- * Connection URL:
- * mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/ Database
- * Name: manualdosnoivos Password: MWxQNVpaUjAw Username: admin
+ * Root User:     admin
+ * Root Password: 5c4wst3DGsRv
+ * Database Name: manualdosnoivos
  *
+ * Connection URL: mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/
  * 
  * @author fabiano
  *
@@ -22,8 +23,8 @@ public class MongoDBTest {
 
 	private static final String DATABASE = "manualdosnoivos";
 	private static final String USER = "admin";
-	private static final String PASSWORD = "MWxQNVpaUjAw";
-	private static final String CONNECTION_URL = "mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/";
+	private static final String PASSWORD = "5c4wst3DGsRv";
+	private static final String CONNECTION_URL = "mongodb://admin:5c4wst3DGsRv@$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/";
 
 	private static MongoCredential credential = MongoCredential
 			.createCredential(USER, DATABASE, PASSWORD.toCharArray());
@@ -32,7 +33,7 @@ public class MongoDBTest {
 		StringBuffer retorno = new StringBuffer();
 		try {
 			retorno.append("MongoClient...");
-			MongoClient mongoClient = new MongoClient("localhost", 27017);
+			MongoClient mongoClient = new MongoClient(CONNECTION_URL);
 			retorno.append("\nMongoClient generated");
 			DB db = mongoClient.getDB(DATABASE);
 			retorno.append("\nConnect to database successfully");
