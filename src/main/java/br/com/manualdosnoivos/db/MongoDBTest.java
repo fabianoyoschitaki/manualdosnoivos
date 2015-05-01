@@ -27,9 +27,6 @@ public class MongoDBTest {
 	private static final String CONNECTION_URL = 
 		"mongodb://$OPENSHIFT_MONGODB_DB_USERNAME:$OPENSHIFT_MONGODB_DB_PASSWORD@$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/";
 
-	private static MongoCredential credential = MongoCredential
-			.createCredential(USER, DATABASE, PASSWORD.toCharArray());
-
 	public static String getCasamentos() {
 		StringBuffer retorno = new StringBuffer();
 		try {
