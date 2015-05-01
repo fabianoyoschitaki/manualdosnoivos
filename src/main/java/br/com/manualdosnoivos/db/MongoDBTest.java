@@ -1,13 +1,11 @@
 package br.com.manualdosnoivos.db;
 
-import java.util.Arrays;
-
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.MongoCredential;
-import com.mongodb.ServerAddress;
 
 /**
  * Teste mongoDB no openshit
@@ -31,22 +29,22 @@ public class MongoDBTest {
 			.createCredential(USER, DATABASE, PASSWORD.toCharArray());
 
 	public static String getCasamentos() {
-		String retorno = "";
+		StringBuffer retorno = new StringBuffer();
 		try {
-			MongoClient mongoClient = new MongoClient(new ServerAddress(
-					CONNECTION_URL), Arrays.asList(credential));
-			System.out.println("Mongoclient generated");
+			MongoClient mongoClient = new MongoClient(new MongoClientURI(CONNECTION_URL));
+			retorno.append("Mongoclient generated");
 			DB db = mongoClient.getDB(DATABASE);
-			System.out.println("Connect to database successfully");
+			retorno.append("\nConnect to database successfully");
 			
 			DBCollection casamento = db.getCollection("casamentos");
-			System.out.println("Collection created successfully");
+			retorno.append("\nCollection created successfully");
 			casamento.save(new BasicDBObject("nome", "bla bla bla"));
-			retorno = "ok";
+			retorno.append("\nok");
+			mongoClient.close();
 		} catch (Exception e) {
-			retorno = e.getClass().getName() + ": " + e.getMessage();
+			retorno.append("\n" + e.getClass().getName() + ": " + e.getMessage());
 		}
-		return retorno;
+		return retorno.toString();
 	}
 
 }
