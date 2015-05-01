@@ -34,7 +34,7 @@ public class MongoDBTest {
 		StringBuffer retorno = new StringBuffer();
 		try {
 			retorno.append("MongoClient.");
-			MongoClient mongoClient = new MongoClient(new MongoClientURI(CONNECTION_URL)s);
+			MongoClient mongoClient = new MongoClient(new MongoClientURI(CONNECTION_URL));
 			retorno.append("\nMongoClient generated");
 			DB db = mongoClient.getDB(DATABASE);
 			retorno.append("\nConnect to database successfully");
