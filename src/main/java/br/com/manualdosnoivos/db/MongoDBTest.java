@@ -42,7 +42,6 @@ public class MongoDBTest {
 			DB db = mongoClient.getDB(DATABASE);
 			retorno.append("\nConnect to database successfully");
 			
-			
 			DBCollection casamento = db.getCollection("casamentos");
 			retorno.append("\nCollection created successfully");
 			//TODO dando pau aqui
