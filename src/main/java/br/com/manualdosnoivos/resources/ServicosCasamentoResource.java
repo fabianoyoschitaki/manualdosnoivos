@@ -1,6 +1,8 @@
 package br.com.manualdosnoivos.resources;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.ws.rs.Consumes;
@@ -31,6 +33,18 @@ public class ServicosCasamentoResource {
 		Set<ServicoCasamento> retorno = new HashSet<ServicoCasamento>();
 		retorno = getServicosCasamentoMock();
 		return retorno;
+	}
+	
+	@GET
+	@Path("/variables")
+	public Map<String, String> getEnvironmentalVariables(){
+		return System.getenv();
+	}
+	
+	@GET
+	@Path("/variable/{variable}")
+	public String getEnvironmentalVariable(@PathParam("variable")String variable){
+		return System.getenv(variable);
 	}
 	
 	@GET
