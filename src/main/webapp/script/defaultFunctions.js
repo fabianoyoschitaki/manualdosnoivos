@@ -1,5 +1,6 @@
-(function(){	
-	function getListaCasamentos($scope, $http){
+Utils : {
+	
+	callService : function($scope, $http){
 		var soap = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.manualdosnoivos.com.br/\">"+
 					   "<soapenv:Header/>"+
 					  "<soapenv:Body>"+
@@ -11,7 +12,7 @@
 		
 		var responsePromise = $http.post("http://manualdosnoivos-manualdosnoivos.rhcloud.com:80/services/Casamento",soap);
 		// var responsePromise = $http.get("http://manualdosnoivos-manualdosnoivos.rhcloud.com/rest/servicoscasamento/servicos");
-	
+
 		responsePromise.success(function(data, status, headers, config) {
 			// console.log(data);
 			var xml = $.parseXML(data);
@@ -26,6 +27,5 @@
 		responsePromise.error(function(data, status, headers, config) {
 			console.log(data);
 		});
-		
 	}
-})()
+}

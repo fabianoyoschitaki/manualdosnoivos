@@ -4,6 +4,6 @@
 	app.controller('CasamentoController', function($scope, $http){
 		this.casamentos = [];
 		
-		getListaCasamentos($scope, $http);
+		Utils.callService($scope, $http);
 	});
 })()	
