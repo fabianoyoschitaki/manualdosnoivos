@@ -1,6 +1,6 @@
 var Utils = {
 	
-	callService : function($scope, $http){
+	callService : function($scope, $http, url, callback){
 		var soap = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.manualdosnoivos.com.br/\">"+
 					   "<soapenv:Header/>"+
 					  "<soapenv:Body>"+
@@ -15,14 +15,15 @@ var Utils = {
 
 		responsePromise.success(function(data, status, headers, config) {
 			// console.log(data);
-			var xml = $.parseXML(data);
-			var casamentos = [];
-			$("casamento", xml).each(function(){
-				var casamento = {};
-				casamento.casal = $(this).text();
-				casamentos.push(casamento);
-			});
-			$scope.casamento.casamentos = casamentos;
+			callback(data);
+			// var xml = $.parseXML(data);
+			// var casamentos = [];
+			// $("casamento", xml).each(function(){
+				// var casamento = {};
+				// casamento.casal = $(this).text();
+				// casamentos.push(casamento);
+			// });
+			// $scope.casamento.casamentos = casamentos;
 		});
 		responsePromise.error(function(data, status, headers, config) {
 			console.log(data);
