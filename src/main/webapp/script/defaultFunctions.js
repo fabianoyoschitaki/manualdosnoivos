@@ -1,4 +1,4 @@
-Utils : {
+var Utils = {
 	
 	callService : function($scope, $http){
 		var soap = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.manualdosnoivos.com.br/\">"+
