@@ -1,4 +1,4 @@
-(function(){
+// (function(){
 	var app = angular.module('listaCasamento', []);
 
 	app.controller('CasamentoController', function($scope, $http){
@@ -6,4 +6,4 @@
 		
 		Utils.callService($scope, $http);
 	});
-})()	
+// })()	
