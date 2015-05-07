@@ -53,9 +53,9 @@ public class CategoriaFornecedorDAO {
         return data;
     }
  
-    public void deleteCategoriaFornecedor(CategoriaFornecedor c) {
+    public void deleteCategoriaFornecedor(String id) {
         DBObject query = BasicDBObjectBuilder.start()
-        	.append("_id", new ObjectId(c.getId())).get();
+        	.append("_id", new ObjectId(id)).get();
         this.col.remove(query);
     }
  

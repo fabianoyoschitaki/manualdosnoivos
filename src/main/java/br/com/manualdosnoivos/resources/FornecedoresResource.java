@@ -7,6 +7,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -29,6 +30,23 @@ public class FornecedoresResource {
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public CategoriaFornecedor adicionaCategoriaFornecedor(CategoriaFornecedor c){
 		return new CategoriaFornecedorDAO().createCategoriaFornecedor(c);
+	}
+	
+	/**@GET
+	@Path("/categoria/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public CategoriaFornecedor deletaCategoriaFornecedor(
+		@PathParam(name="id") String id,
+		@QueryParam(name="operation") String operacao){
+		return new CategoriaFornecedorDAO().createCategoriaFornecedor(c);
+	}**/
+	
+	@DELETE
+	@Path("/categoria/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public CategoriaFornecedor deletaCategoriaFornecedor(
+		@PathParam("id") String id){
+		new CategoriaFornecedorDAO().deleteCategoriaFornecedor(id);
 	}
 	
 	@POST
