@@ -18,7 +18,6 @@ public class FornecedoresResource {
 	@GET
 	@Path("/categorias")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public List<CategoriaFornecedor> getCategoriasFornecedor(){
 		return new CategoriaFornecedorDAO().readAllCategoriaFornecedor();
 	}
