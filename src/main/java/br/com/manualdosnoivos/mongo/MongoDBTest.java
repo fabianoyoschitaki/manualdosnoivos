@@ -1,4 +1,4 @@
-package br.com.manualdosnoivos.db;
+package br.com.manualdosnoivos.mongo;
 
 import java.util.Arrays;
 

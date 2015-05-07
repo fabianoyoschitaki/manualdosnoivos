@@ -5,24 +5,27 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class ServicoCasamento implements Serializable {
+public class CategoriaFornecedor implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private String id;
+	private Short codigo;
 	private String nome;
 	private String descricao;
-	
-	public ServicoCasamento() {
-		super();
+	public String getId() {
+		return id;
 	}
-	
-	public ServicoCasamento(String nome, String descricao) {
-		super();
-		this.nome = nome;
-		this.descricao = descricao;
+	public void setId(String id) {
+		this.id = id;
 	}
-
+	public Short getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(Short codigo) {
+		this.codigo = codigo;
+	}
 	public String getNome() {
 		return nome;
 	}

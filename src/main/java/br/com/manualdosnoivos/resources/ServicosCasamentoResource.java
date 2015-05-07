@@ -1,8 +1,6 @@
 package br.com.manualdosnoivos.resources;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import javax.ws.rs.Consumes;
@@ -10,9 +8,10 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
-import br.com.manualdosnoivos.common.ServicoCasamento;
-import br.com.manualdosnoivos.db.MongoDBTest;
+import br.com.manualdosnoivos.model.ServicoCasamento;
+import br.com.manualdosnoivos.mongo.MongoDBTest;
 
 /**
  * Exemplo WebService RESTful com JAX-RS
@@ -23,8 +22,8 @@ import br.com.manualdosnoivos.db.MongoDBTest;
  *
  */
 @Path("/servicoscasamento")
-@Produces("application/json")
-@Consumes("application/json")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class ServicosCasamentoResource {
 
 	@GET
@@ -33,18 +32,6 @@ public class ServicosCasamentoResource {
 		Set<ServicoCasamento> retorno = new HashSet<ServicoCasamento>();
 		retorno = getServicosCasamentoMock();
 		return retorno;
-	}
-	
-	@GET
-	@Path("/variables")
-	public Map<String, String> getEnvironmentalVariables(){
-		return System.getenv();
-	}
-	
-	@GET
-	@Path("/variable/{variable}")
-	public String getEnvironmentalVariable(@PathParam("variable")String variable){
-		return System.getenv(variable);
 	}
 	
 	@GET
