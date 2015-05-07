@@ -26,7 +26,7 @@ public class FornecedoresResource {
 	@POST
 	@Path("/categoria")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_FORM_URLENCODED})
+	@Consumes(MediaType.APPLICATION_JSON)
 	public CategoriaFornecedor adicionaCategoriaFornecedor(CategoriaFornecedor c){
 		return new CategoriaFornecedorDAO().createCategoriaFornecedor(c);
 	}
