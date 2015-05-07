@@ -27,7 +27,7 @@ public class CategoriaFornecedorConverter {
 	// take special note of converting ObjectId to String
 	public static CategoriaFornecedor toCategoriaFornecedor (DBObject doc) {
 		CategoriaFornecedor retorno = new CategoriaFornecedor();
-		retorno.setCodigo((Short) doc.get("codigo"));
+		retorno.setCodigo((Integer) doc.get("codigo"));
 		retorno.setNome((String) doc.get("nome"));
 		retorno.setDescricao((String) doc.get("descricao"));
 		ObjectId id = (ObjectId) doc.get("_id");

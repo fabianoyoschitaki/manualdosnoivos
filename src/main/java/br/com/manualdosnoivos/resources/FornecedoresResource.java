@@ -13,18 +13,20 @@ import br.com.manualdosnoivos.dao.CategoriaFornecedorDAO;
 import br.com.manualdosnoivos.model.CategoriaFornecedor;
 
 @Path("/fornecedores")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
 public class FornecedoresResource {
 	
 	@GET
 	@Path("/categorias")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
 	public List<CategoriaFornecedor> getCategoriasFornecedor(){
 		return new CategoriaFornecedorDAO().readAllCategoriaFornecedor();
 	}
 	
 	@POST
 	@Path("/categoria")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_FORM_URLENCODED})
 	public CategoriaFornecedor adicionaCategoriaFornecedor(CategoriaFornecedor c){
 		return new CategoriaFornecedorDAO().createCategoriaFornecedor(c);
 	}

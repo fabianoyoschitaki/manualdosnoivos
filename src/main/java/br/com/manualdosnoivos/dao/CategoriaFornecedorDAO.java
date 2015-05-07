@@ -14,7 +14,6 @@ import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
 
 /**
  * DAO para categorias de fornecedores

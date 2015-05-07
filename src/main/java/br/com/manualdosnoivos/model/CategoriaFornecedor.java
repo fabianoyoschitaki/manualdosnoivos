@@ -11,7 +11,7 @@ public class CategoriaFornecedor implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String id;
-	private Short codigo;
+	private Integer codigo;
 	private String nome;
 	private String descricao;
 	public String getId() {
@@ -20,10 +20,10 @@ public class CategoriaFornecedor implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public Short getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(Short codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 	public String getNome() {
