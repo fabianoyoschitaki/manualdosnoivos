@@ -45,8 +45,7 @@ public class FornecedoresResource {
 	@DELETE
 	@Path("/categoria/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public CategoriaFornecedor deletaCategoriaFornecedor(
-		@PathParam("id") String id){
+	public void deletaCategoriaFornecedor(@PathParam("id") String id){
 		new CategoriaFornecedorDAO().deleteCategoriaFornecedor(id);
 	}
 	
