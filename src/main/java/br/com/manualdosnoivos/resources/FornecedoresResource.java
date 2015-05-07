@@ -32,7 +32,7 @@ public class FornecedoresResource {
 	}
 	
 	@POST
-	@Path("/categoria")
+	@Path("/categoriaForm")
 	@Produces(MediaType.APPLICATION_JSON)
 	public CategoriaFornecedor adicionaCategoriaFornecedor(
 		@FormParam("id") String id,
