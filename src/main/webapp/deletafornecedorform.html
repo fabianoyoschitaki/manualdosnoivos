@@ -6,29 +6,24 @@
 		<script>
 			var servico = "http://manualdosnoivos-manualdosnoivos.rhcloud.com/rest/fornecedores/categorias";
 			$.getJSON(servico, function(data){
-				  var items = [];
 				  $.each(data, function(i, fornecedor) {
-				  	  items.push( "<li id='fornecedor'>" + fornecedor.nome + "<a href='#' id='" + fornecedor.id + "'  > Deletar </a></li>");
+				  	  $("<li/>", {"id" : fornecedor.id, "text": fornecedor.nome})
+				  	  	.appendTo("#fornecedores")
+				  	  	.click(function() {
+					    	$.ajax({
+					    	    url: '/rest/fornecedores/categoria/' + $(this).attr('id'),
+					    	    type: 'DELETE',
+					    	    success: function(result) {
+					    	        alert('deletado!');
+					    	    }
+					    	});
+					    );
 				  });
-				  
-				  $("#fornecedor a").click(function() {
-				    	$.ajax({
-				    	    url: '/rest/fornecedores/categoria/' + $(this).attr('id'),
-				    	    type: 'DELETE',
-				    	    success: function(result) {
-				    	        alert('deletado!');
-				    	    }
-				    	});
-				  });
-				  
-				  $("<ul/>", { "class": "lista-fornecedores",
-				  	  html: items.join( "" )
-				  }).appendTo("#fornecedores");
 			});
 		</script>
 	</head>
 	<body>
-		<div id='fornecedores'>
-		</div>
+		<ul id='fornecedores'>
+		</ul>
 	</body>
 </html>
