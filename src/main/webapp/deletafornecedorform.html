@@ -5,10 +5,10 @@
 		<script src="script/jquery-1.11.2.min.js"></script>
 		<script>
 			var servico = "http://manualdosnoivos-manualdosnoivos.rhcloud.com/rest/fornecedores/categorias";
-			$.getJSON(servico, function( fornecedores ) {
+			$.getJSON(servico, function(data){
 				  var items = [];
-				  $.each( fornecedores, function( fornecedor ) {
-				  	  items.push( "<li id='" + fornecedor['id'] + "'>" + fornecedor['nome'] + "</li>" );
+				  $.each(data, function(i, fornecedor) {
+				  	  items.push( "<li id='" + fornecedor.id + "'>" + fornecedor.nome + "</li>" );
 				  });
 				 
 				  $("<ul/>", { "class": "lista-fornecedores",
