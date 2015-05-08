@@ -8,23 +8,23 @@
 			$.getJSON(servico, function(data){
 				  $.each(data, function(i, fornecedor) {
 				  	  $("<li/>", {
-				  		  "id" : fornecedor.id, 
 				  		  "text": fornecedor.nome,
 				  		  }
 				  	   ).append($("<a/>", {
-						  	"href" : "http://www.google.com/",
+						  	"href" : "#",
+						  	"id" : fornecedor.id,
 						    "text" : "Deletar"
-							})
-				  	   ).click(function() {
-					    	$.ajax({
-					    	    url: '/rest/fornecedores/categoria/' + this.id,
-					    	    type: 'DELETE',
-					    	    success: function(result) {
-					    	        alert('deletado!');
-					    	        location.reload();
-					    	    }
-					    	});
-				  	  }).appendTo("#fornecedores");
+							}).click(function() {
+						    	$.ajax({
+						    	    url: '/rest/fornecedores/categoria/' + this.id,
+						    	    type: 'DELETE',
+						    	    success: function(result) {
+						    	        alert('deletado!');
+						    	        location.reload();
+						    	    }
+						    	});
+					  	  })
+				  	   ).appendTo("#fornecedores");
 				  });
 			});
 		</script>
