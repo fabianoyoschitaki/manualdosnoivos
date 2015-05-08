@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>Lista de Fornecedores</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<script src="script/jquery-1.11.2.min.js"></script>
+		<script>
+			var servico = "http://manualdosnoivos-manualdosnoivos.rhcloud.com/rest/fornecedores/categorias";
+			$.get(servico, function(data) {
+				alert(data);
+				alert(data.length);
+				
+			});
+			alert("teste");
+			$.getJSON(servico, function( data ) {
+				  var items = [];
+				  $.each( data, function( key, val ) {
+				  	  items.push( "<li id='" + key + "'>" + val + "</li>" );
+				  });
+				 
+				  $("<ul/>", {
+				    "class": "my-new-list",
+				  	html: items.join( "" )
+				  }).appendTo("#fornecedores");
+			});
+		</script>
+	</head>
+	<body>
+		<div id='fornecedores'>
+			
+		</div>
+	</body>
+</html>
