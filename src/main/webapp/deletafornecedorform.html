@@ -10,22 +10,20 @@
 				  $.each(data, function(i, fornecedor) {
 				  	  items.push( "<li id='fornecedor'>" + fornecedor.nome + "<a href='#' id='" + fornecedor.id + "'  > Deletar </a></li>");
 				  });
-				 
+				  
+				  $("#fornecedor a").click(function() {
+				    	$.ajax({
+				    	    url: '/rest/fornecedores/categoria/' + $(this).attr('id'),
+				    	    type: 'DELETE',
+				    	    success: function(result) {
+				    	        alert('deletado!');
+				    	    }
+				    	});
+				  });
+				  
 				  $("<ul/>", { "class": "lista-fornecedores",
 				  	  html: items.join( "" )
 				  }).appendTo("#fornecedores");
-			});
-			
-			$(document).ready(function() {
-			    $("#fornecedor a").click(function() {
-			    	$.ajax({
-			    	    url: '/rest/fornecedores/categoria/' + $(this).attr('id'),
-			    	    type: 'DELETE',
-			    	    success: function(result) {
-			    	        alert('deletado!');
-			    	    }
-			    	});
-			    });
 			});
 		</script>
 	</head>
