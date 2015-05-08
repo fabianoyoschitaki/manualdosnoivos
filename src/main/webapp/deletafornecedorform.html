@@ -8,7 +8,7 @@
 			$.getJSON(servico, function(data){
 				  var items = [];
 				  $.each(data, function(i, fornecedor) {
-				  	  items.push( "<li id='fornecedor'>" + fornecedor.nome + "<a href='#' id='" + fornecedor.id + "'  ></a></li>");
+				  	  items.push( "<li id='fornecedor'>" + fornecedor.nome + "<a href='#' id='" + fornecedor.id + "'  > Deletar </a></li>");
 				  });
 				 
 				  $("<ul/>", { "class": "lista-fornecedores",
@@ -19,7 +19,7 @@
 			$(document).ready(function() {
 			    $("#fornecedor a").click(function() {
 			    	$.ajax({
-			    	    url: '/rest/fornecedores/categoria/' + $(this).id,
+			    	    url: '/rest/fornecedores/categoria/' + $(this).attr('id'),
 			    	    type: 'DELETE',
 			    	    success: function(result) {
 			    	        alert('deletado!');
