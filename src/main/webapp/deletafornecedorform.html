@@ -5,20 +5,13 @@
 		<script src="script/jquery-1.11.2.min.js"></script>
 		<script>
 			var servico = "http://manualdosnoivos-manualdosnoivos.rhcloud.com/rest/fornecedores/categorias";
-			$.get(servico, function(data) {
-				alert(data);
-				alert(data.length);
-				
-			});
-			alert("teste");
-			$.getJSON(servico, function( data ) {
+			$.getJSON(servico, function( fornecedores ) {
 				  var items = [];
-				  $.each( data, function( key, val ) {
-				  	  items.push( "<li id='" + key + "'>" + val + "</li>" );
+				  $.each( fornecedores, function( fornecedor ) {
+				  	  items.push( "<li id='" + fornecedor['id'] + "'>" + fornecedor['nome'] + "</li>" );
 				  });
 				 
-				  $("<ul/>", {
-				    "class": "my-new-list",
+				  $("<ul/>", { "class": "lista-fornecedores",
 				  	html: items.join( "" )
 				  }).appendTo("#fornecedores");
 			});
@@ -26,7 +19,6 @@
 	</head>
 	<body>
 		<div id='fornecedores'>
-			
 		</div>
 	</body>
 </html>
