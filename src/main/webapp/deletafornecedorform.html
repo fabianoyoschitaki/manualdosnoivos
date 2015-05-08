@@ -10,12 +10,18 @@
 				  	  $("<li/>", {
 				  		  "id" : fornecedor.id, 
 				  		  "text": fornecedor.nome,
-				  	  }).click(function() {
+				  		  }
+				  	   ).append($("<a/>", {
+						  	"href" : "http://www.google.com/",
+						    "text" : "Deletar"
+							})
+				  	   ).click(function() {
 					    	$.ajax({
-					    	    url: '/rest/fornecedores/categoria/' + $(this).attr('id'),
+					    	    url: '/rest/fornecedores/categoria/' + this.id,
 					    	    type: 'DELETE',
 					    	    success: function(result) {
 					    	        alert('deletado!');
+					    	        location.reload();
 					    	    }
 					    	});
 				  	  }).appendTo("#fornecedores");
