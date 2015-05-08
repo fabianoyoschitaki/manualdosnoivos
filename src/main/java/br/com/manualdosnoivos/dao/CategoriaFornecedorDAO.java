@@ -59,9 +59,9 @@ public class CategoriaFornecedorDAO {
         this.col.remove(query);
     }
  
-    public CategoriaFornecedor readPerson(CategoriaFornecedor c) {
+    public CategoriaFornecedor readCategoriaFornecedor(String id) {
         DBObject query = BasicDBObjectBuilder.start()
-        	.append("_id", new ObjectId(c.getId())).get();
+        	.append("_id", new ObjectId(id)).get();
         DBObject data = this.col.findOne(query);
         return CategoriaFornecedorConverter.toCategoriaFornecedor(data);
     }
