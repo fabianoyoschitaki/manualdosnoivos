@@ -8,16 +8,7 @@
 			$.getJSON(servico, function(data){
 				  $.each(data, function(i, fornecedor) {
 				  	  $("<li/>", {"id" : fornecedor.id, "text": fornecedor.nome})
-				  	  	.appendTo("#fornecedores")
-				  	  	.click(function() {
-					    	$.ajax({
-					    	    url: '/rest/fornecedores/categoria/' + $(this).attr('id'),
-					    	    type: 'DELETE',
-					    	    success: function(result) {
-					    	        alert('deletado!');
-					    	    }
-					    	});
-					    );
+				  	  	.appendTo("#fornecedores");
 				  });
 			});
 		</script>
