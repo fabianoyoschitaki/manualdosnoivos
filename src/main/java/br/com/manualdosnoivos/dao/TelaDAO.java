@@ -33,4 +33,11 @@ public class TelaDAO {
         t.setId(id.toString());
         return t;
     }
+    
+    public Tela updateTela(Tela t) {
+        DBObject query = BasicDBObjectBuilder.start()
+        	.append("_id", new ObjectId(t.getId())).get();
+        this.col.update(query, TelaConverter.toDBObject(t));
+        return t;
+    }
 }

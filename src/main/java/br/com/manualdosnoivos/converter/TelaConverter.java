@@ -16,7 +16,7 @@ public class TelaConverter {
 
 		BasicDBObjectBuilder builder = BasicDBObjectBuilder.start()
 			.append("nome", tela.getNome())
-			.append("descricao", tela.getConteudo());
+			.append("conteudo", tela.getConteudo());
 		if (tela.getId() != null) {
 			builder = builder.append("_id", new ObjectId(tela.getId()));
 		}

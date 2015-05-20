@@ -58,15 +58,25 @@ public class TelasResource {
 		@FormParam("conteudo") String conteudo){
 		
 		Tela retorno = null;
+		// se enviou nome da tela e o conteúdo
 		if (nome != null && conteudo != null){
-			Tela t = new Tela();
-			t.setId(id);
-			t.setNome(nome);
-			t.setConteudo(conteudo);
-			retorno = new TelaDAO().createTela(t);
-		} else {
-			retorno = null;
-		}
+			TelaDAO dao = new TelaDAO();
+			
+			// ve se a tela ja existe no banco
+			Tela t = dao.readTela(nome);
+			
+			// nova tela
+			if (t == null){
+				t = new Tela();
+				t.setNome(nome);
+				retorno = dao.createTela(t);
+			} 
+			// só atualiza
+			else {
+				t.setConteudo(conteudo);
+				retorno = dao.updateTela(t);
+			} 
+		} 
 		return retorno;
 	}
 }
