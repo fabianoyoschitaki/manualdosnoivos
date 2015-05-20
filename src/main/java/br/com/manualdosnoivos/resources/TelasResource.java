@@ -1,5 +1,7 @@
 package br.com.manualdosnoivos.resources;
 
+import java.util.List;
+
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -8,12 +10,25 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import br.com.manualdosnoivos.dao.CategoriaFornecedorDAO;
 import br.com.manualdosnoivos.dao.TelaDAO;
+import br.com.manualdosnoivos.model.CategoriaFornecedor;
 import br.com.manualdosnoivos.model.Tela;
 
 @Path("/telas")
 public class TelasResource {
 	
+	/**
+	 * Devolve lista de todas as telas
+	 * 
+	 * @return
+	 */
+	@GET
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Tela> getTelas(){
+		return new TelaDAO().readAllTelas();
+	}
 	/**
 	 * Devolve uma única tela
 	 * 

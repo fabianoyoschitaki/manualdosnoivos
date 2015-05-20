@@ -1,5 +1,8 @@
 package br.com.manualdosnoivos.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bson.types.ObjectId;
 
 import br.com.manualdosnoivos.converter.CategoriaFornecedorConverter;
@@ -11,6 +14,7 @@ import br.com.manualdosnoivos.mongo.MongoDBUtil;
 
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
 public class TelaDAO {
@@ -39,5 +43,16 @@ public class TelaDAO {
         	.append("_id", new ObjectId(t.getId())).get();
         this.col.update(query, TelaConverter.toDBObject(t));
         return t;
+    }
+    
+    public List<Tela> readAllTelas() {
+        List<Tela> data = new ArrayList<Tela>();
+        DBCursor cursor = col.find();
+        while (cursor.hasNext()) {
+            DBObject doc = cursor.next();
+            Tela c = TelaConverter.toTela(doc);
+            data.add(c);
+        }
+        return data;
     }
 }
