@@ -26,13 +26,14 @@ public class TelasServletController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = request.getRequestURI().substring(request.getContextPath().length());
+		String path = request.getRequestURI().substring(request.getContextPath().length() + 7);
+		
 		// Set response content type
 		response.setContentType("text/html");
 
 		// Actual logic goes here.
 		PrintWriter out = response.getWriter();
-		out.println("<h1>" + path + "</h1>");
+		out.println("<h1> Você tentou acessar a página [" + path + "]</h1>");
 	}
 
 	/**
