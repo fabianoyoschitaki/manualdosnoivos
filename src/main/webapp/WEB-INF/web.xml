@@ -25,6 +25,6 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>TelasServletController</servlet-name>
-		<url-pattern>/pages/*.do</url-pattern>
+		<url-pattern>/pages/*</url-pattern>
 	</servlet-mapping>
 </web-app>
