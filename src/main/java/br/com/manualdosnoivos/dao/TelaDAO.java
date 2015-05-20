@@ -1,0 +1,27 @@
+package br.com.manualdosnoivos.dao;
+
+import org.bson.types.ObjectId;
+
+import br.com.manualdosnoivos.converter.TelaConverter;
+import br.com.manualdosnoivos.model.Tela;
+import br.com.manualdosnoivos.mongo.MongoDBConstants;
+import br.com.manualdosnoivos.mongo.MongoDBUtil;
+
+import com.mongodb.BasicDBObjectBuilder;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
+
+public class TelaDAO {
+	private DBCollection col;
+	
+	public TelaDAO () {
+        this.col = MongoDBUtil.getMongo().getDB(MongoDBConstants.DATABASE).getCollection(MongoDBConstants.COLLECTION_TELAS);
+    }
+ 
+    public Tela readTela(String nome) {
+        DBObject query = BasicDBObjectBuilder.start()
+        	.append("nome", new ObjectId(nome)).get();
+        DBObject data = this.col.findOne(query);
+        return TelaConverter.toTela(data);
+    }
+}

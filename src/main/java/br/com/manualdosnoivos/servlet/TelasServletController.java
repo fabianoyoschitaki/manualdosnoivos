@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import br.com.manualdosnoivos.dao.TelaDAO;
+import br.com.manualdosnoivos.model.Tela;
 
 /**
  * Servlet implementation class TelaServlet
@@ -27,13 +29,19 @@ public class TelasServletController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getRequestURI().substring(request.getContextPath().length() + 7);
-		
 		// Set response content type
 		response.setContentType("text/html");
 
 		// Actual logic goes here.
 		PrintWriter out = response.getWriter();
-		out.println("<h1> Você tentou acessar a página [" + path + "]</h1>");
+		if (path != null){
+			Tela tela = new TelaDAO().readTela(path);
+			if (tela != null){
+				out.println(tela.getConteudo());
+			}
+		} else {
+			out.println("<h1> Página [" + path + "] não existe.</h1>");
+		}
 	}
 
 	/**
