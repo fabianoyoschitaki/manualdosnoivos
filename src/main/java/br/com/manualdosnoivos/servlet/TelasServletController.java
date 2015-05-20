@@ -37,7 +37,11 @@ public class TelasServletController extends HttpServlet {
 		if (path != null){
 			Tela tela = new TelaDAO().readTela(path);
 			if (tela != null){
-				out.println(tela.getConteudo());
+				if (!"".equals(tela.getConteudo())){
+					out.println(tela.getConteudo());
+				} else {
+					out.println("<h1> Página [" + path + "] existe, mas não tem conteúdo.</h1>");
+				}
 			}
 		} else {
 			out.println("<h1> Página [" + path + "] não existe.</h1>");
