@@ -83,6 +83,7 @@ public class TelasResource {
 			if (t == null){
 				t = new Tela();
 				t.setNome(nome);
+				t.setConteudo(conteudo);
 				retorno = dao.createTela(t);
 			} 
 			// só atualiza
