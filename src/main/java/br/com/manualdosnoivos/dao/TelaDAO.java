@@ -19,8 +19,7 @@ public class TelaDAO {
     }
  
     public Tela readTela(String nome) {
-        DBObject query = BasicDBObjectBuilder.start()
-        	.append("nome", new ObjectId(nome)).get();
+        DBObject query = BasicDBObjectBuilder.start().append("nome", nome).get();
         DBObject data = this.col.findOne(query);
         return TelaConverter.toTela(data);
     }
