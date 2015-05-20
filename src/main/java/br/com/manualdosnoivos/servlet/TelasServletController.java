@@ -42,10 +42,10 @@ public class TelasServletController extends HttpServlet {
 				} else {
 					out.println("<h1> Página [" + path + "] existe, mas não tem conteúdo.</h1>");
 				}
+			} else {
+				out.println("<h1> Página [" + path + "] não existe.</h1>");
 			}
-		} else {
-			out.println("<h1> Página [" + path + "] não existe.</h1>");
-		}
+		} 
 	}
 
 	/**

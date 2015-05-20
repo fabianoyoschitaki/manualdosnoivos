@@ -1,7 +1,5 @@
 package br.com.manualdosnoivos.dao;
 
-import org.bson.types.ObjectId;
-
 import br.com.manualdosnoivos.converter.TelaConverter;
 import br.com.manualdosnoivos.model.Tela;
 import br.com.manualdosnoivos.mongo.MongoDBConstants;
