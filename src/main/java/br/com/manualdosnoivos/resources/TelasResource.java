@@ -21,7 +21,7 @@ public class TelasResource {
 	 * @return
 	 */
 	@GET
-	@Path("/{nome}")
+	@Path("/tela/{nome}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Tela getTela(
 		@PathParam("nome") String nome){
@@ -50,10 +50,9 @@ public class TelasResource {
 	 * @return
 	 */
 	@POST
-	@Path("/{nome}")
+	@Path("/tela")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Tela addTela(
-		@FormParam("id") String id,
 		@FormParam("nome") String nome,
 		@FormParam("conteudo") String conteudo){
 		
