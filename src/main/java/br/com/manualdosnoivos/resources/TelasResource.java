@@ -10,9 +10,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.manualdosnoivos.dao.CategoriaFornecedorDAO;
 import br.com.manualdosnoivos.dao.TelaDAO;
-import br.com.manualdosnoivos.model.CategoriaFornecedor;
 import br.com.manualdosnoivos.model.Tela;
 
 @Path("/telas")
