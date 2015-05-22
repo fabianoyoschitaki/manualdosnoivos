@@ -1,5 +1,12 @@
 <html>
 	<head>
+		<link rel="stylesheet" href="lib/codemirror.css">
+		<script src="lib/codemirror.js"></script>
+		<script>
+		  var editor = CodeMirror.fromTextArea(getElementById('conteudo'), {
+		    lineNumbers: true
+		  });
+		</script>
 		<style type="text/css">
 			textarea {
 			    border:1px solid #999999;
@@ -15,7 +22,7 @@
 		<form action="rest/telas/tela" method="post">
 			<p>Tela : <input type="text" name="nome" /></p>
 			<p>Senha : <input type="password" name="senha" /></p>
-			<p>Conteudo : <textarea rows="4" cols="50" name="conteudo"></textarea></p>
+			<p>Conteudo : <textarea rows="4" cols="50" name="conteudo" id="conteudo"></textarea></p>
 			<input type="submit" value="Adiciona" />
 		</form>
 	</body>
