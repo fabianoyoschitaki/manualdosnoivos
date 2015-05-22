@@ -1,10 +1,10 @@
 <html>
 	<head>
 		<style type="text/css">
-			textarea
-			{
+			textarea {
 			    border:1px solid #999999;
 			    width:100%;
+			    height:70%;
 			    margin:5px 0;
 			    padding:3px;
 			}		
@@ -13,12 +13,9 @@
 	<body>
 		<h1>Criando Tela JAX-RS @FormParam</h1>
 		<form action="rest/telas/tela" method="post">
-			<p>
-				Nome : <input type="text" name="nome" />
-			</p>
-			<p>
-				Conteudo : <textarea rows="4" cols="50" name="conteudo"></textarea>
-			</p>
+			<p>Tela : <input type="text" name="nome" /></p>
+			<p>Senha : <input type="password" name="senha" /></p>
+			<p>Conteudo : <textarea rows="4" cols="50" name="conteudo"></textarea></p>
 			<input type="submit" value="Adiciona" />
 		</form>
 	</body>

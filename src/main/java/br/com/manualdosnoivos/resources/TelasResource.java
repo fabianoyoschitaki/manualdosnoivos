@@ -67,11 +67,12 @@ public class TelasResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Tela addTela(
 		@FormParam("nome") String nome,
+		@FormParam("senha") String senha,
 		@FormParam("conteudo") String conteudo){
 		
 		Tela retorno = null;
 		// se enviou nome da tela e o conteúdo
-		if (nome != null && conteudo != null){
+		if (nome != null && conteudo != null && senha.equals("jordao123")){
 			TelaDAO dao = new TelaDAO();
 			
 			// ve se a tela ja existe no banco
