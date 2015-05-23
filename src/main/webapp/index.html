@@ -9,11 +9,15 @@
 	$.getJSON(servico, function(data){
 		  $.each(data, function(i, tela) {
 		  	  $("<li/>", {
-		  		  "text": tela.nome,
+		  		  	"text": tela.nome,
 		  		  }
-		  	   ).append($("<a/>", {
+		  	   ).append(" ").append($("<a/>", {
 		  		 	"text" : "Acessar",
 				  	"href" : "http://www.manualdosnoivos.com.br/pages/" + tela.nome
+				  })
+		  	   ).append(" ").append($("<a/>", {
+		  		 	"text" : "Editar",
+				  	"href" : "http://www.manualdosnoivos.com.br/admin_tela.html?action=editar&tela=" + tela.nome
 				  })
 		  	   ).appendTo("#telas");
 		  });
@@ -22,7 +26,7 @@
   <title>Manual dos Noivos</title>
 </head>
 <body>
-	<h1>Manual dos Noivos 1.0.41</h1>
+	<h1>Manual dos Noivos 1.0.42</h1>
 	<br/>
 	<a href="/rest/servicoscasamento/servicos">REST listar serviços casamento</a>
 	<br/>
@@ -44,8 +48,7 @@
 	<p>Deleta categoria fornecedor</p>
 	<a href="/deletafornecedorform.html">deleta fornecedor</a>
 	
-	<p>Criando tela</p>
-	<a href="/novatelaform.html">form tela</a>
+	<a href="admin_tela.html?action=criar">Criar tela</a>
 	
 	<p>Telas</p>
 	<ul id='telas'>
