@@ -23,10 +23,19 @@
 					var servico = "http://www.manualdosnoivos.com.br/rest/telas/tela/" + tela;
 					$.getJSON(servico, function(data){
 					  	  $("#nome").val(data.nome);
-					  	  $("#conteudo").val(data.conteudo);
+					  	  $("#conteudo").text(data.conteudo);
 					  	  $("#submit").val("Alterar");
 					});
 				}
+				
+				var editor = CodeMirror.fromTextArea('conteudo', {
+				    height: "350px",
+				    parserfile: "parsexml.js",
+				    stylesheet: "lib/xmlcolors.css",
+				    path: "lib/",
+				    continuousScanning: 500,
+				    lineNumbers: true
+				  });
 			});
 		</script>
 	    <title>Admin tela - manualdosnoivos</title>
@@ -55,15 +64,6 @@
 			</div>
 			<input type="submit" value="Adiciona" id="submit"></input>
 		</form>
-		<script type="text/javascript">
-		  var editor = CodeMirror.fromTextArea('conteudo', {
-		    height: "350px",
-		    parserfile: "parsexml.js",
-		    stylesheet: "lib/xmlcolors.css",
-		    path: "lib/",
-		    continuousScanning: 500,
-		    lineNumbers: true
-		  });
-		</script>
+		
 	</body>
 </html>
