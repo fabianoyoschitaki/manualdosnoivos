@@ -1,57 +1,57 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <script src="script/jquery-1.11.2.min.js"></script>
-  <script>
-	var servico = "http://www.manualdosnoivos.com.br/rest/telas";
-	$.getJSON(servico, function(data){
-		  $.each(data, function(i, tela) {
-		  	  $("<li/>", {
-		  		  	"text": tela.nome,
-		  		  }
-		  	   ).append(" ").append($("<a/>", {
-		  		 	"text" : "Acessar",
-				  	"href" : "http://www.manualdosnoivos.com.br/pages/" + tela.nome
-				  })
-		  	   ).append(" ").append($("<a/>", {
-		  		 	"text" : "Editar",
-				  	"href" : "http://www.manualdosnoivos.com.br/admin_tela.html?action=editar&tela=" + tela.nome
-				  })
-		  	   ).appendTo("#telas");
-		  });
-	});
-  </script>
-  <title>Manual dos Noivos</title>
-</head>
-<body>
-	<h1>Manual dos Noivos 1.0.42</h1>
-	<br/>
-	<a href="/rest/servicoscasamento/servicos">REST listar serviços casamento</a>
-	<br/>
-	<a href="/rest/servicoscasamento/servico/Convites">REST listar serviço Convite</a>
-	<br/>
-	<a href="/services/Casamento?WSDL">SOAP Casamentos</a>
-	<br/>
-	<a href="/listaCasamentos.html">HTML Casamentos</a>
-	<br/>
-	<p>Fabiano - iniciando serviço categorias de fornecedores</p>
-	<a href="/rest/fornecedores/categorias">Categorias Fornecedores</a>
-	<br/>
-	<p>Criando categoria com query parameter</p>
-	<a href="/rest/fornecedores/categoriaQuery?codigo=10&nome=Vestido&descricao=Vestidos%20Teste">http://manualdosnoivos-manualdosnoivos.rhcloud.com/rest/fornecedores/categoriaQuery?codigo=10&nome=Vestido&descricao=Vestidos%20Teste</a>
-	<br/>
-	<p>Criando categoria com form parameter</p>
-	<a href="/novofornecedorform.html">form fornecedor</a>
-	<br/>
-	<p>Deleta categoria fornecedor</p>
-	<a href="/deletafornecedorform.html">deleta fornecedor</a>
-	
-	<a href="admin_tela.html?action=criar">Criar tela</a>
-	
-	<p>Telas</p>
-	<ul id='telas'>
-	</ul>
-</body>
+	<head>
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	  <script src="script/jquery-1.11.2.min.js"></script>
+	  <script>
+		var servico = "http://www.manualdosnoivos.com.br/rest/telas";
+		$.getJSON(servico, function(data){
+			  $.each(data, function(i, tela) {
+			  	  $("<li/>", {
+			  		  	"text": tela.nome,
+			  		  }
+			  	   ).append(" ").append($("<a/>", {
+			  		 	"text" : "Acessar",
+					  	"href" : "http://www.manualdosnoivos.com.br/pages/" + tela.nome
+					  })
+			  	   ).append(" ").append($("<a/>", {
+			  		 	"text" : "Editar",
+					  	"href" : "http://www.manualdosnoivos.com.br/admin_tela.html?action=editar&tela=" + tela.nome
+					  })
+			  	   ).appendTo("#telas");
+			  });
+		});
+	  </script>
+	  <title>Manual dos Noivos</title>
+	</head>
+	<body>
+		<h1>Manual dos Noivos 1.0.42</h1>
+		<br/>
+		<a href="/rest/servicoscasamento/servicos">REST listar serviços casamento</a>
+		<br/>
+		<a href="/rest/servicoscasamento/servico/Convites">REST listar serviço Convite</a>
+		<br/>
+		<a href="/services/Casamento?WSDL">SOAP Casamentos</a>
+		<br/>
+		<a href="/listaCasamentos.html">HTML Casamentos</a>
+		<br/>
+		<p>Fabiano - iniciando serviço categorias de fornecedores</p>
+		<a href="/rest/fornecedores/categorias">Categorias Fornecedores</a>
+		<br/>
+		<p>Criando categoria com query parameter</p>
+		<a href="/rest/fornecedores/categoriaQuery?codigo=10&nome=Vestido&descricao=Vestidos%20Teste">http://manualdosnoivos-manualdosnoivos.rhcloud.com/rest/fornecedores/categoriaQuery?codigo=10&nome=Vestido&descricao=Vestidos%20Teste</a>
+		<br/>
+		<p>Criando categoria com form parameter</p>
+		<a href="/novofornecedorform.html">form fornecedor</a>
+		<br/>
+		<p>Deleta categoria fornecedor</p>
+		<a href="/deletafornecedorform.html">deleta fornecedor</a>
+		<br/>
+		<p>Telas</p>
+		<a href="admin_tela.html?action=criar">Criar tela</a>
+		<br/>
+		<ul id='telas'>
+		</ul>
+	</body>
 </html>

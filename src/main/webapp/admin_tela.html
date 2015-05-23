@@ -2,8 +2,35 @@
 	<head>
 		<!-- ver mais detalhes em http://codemirror.net/demo/complete.html -->
 		<script src="lib/codemirror.js" type="text/javascript"></script>
-	    <title>CodeMirror: HTML/XML demonstration</title>
-	    <link rel="stylesheet" type="text/css" href="lib/docs.css"/>
+		<script src="script/jquery-1.11.2.min.js"></script>
+		<script>
+			function getUrlParameter(sParam){
+			    var sPageURL = window.location.search.substring(1);
+			    var sURLVariables = sPageURL.split('&');
+			    for (var i = 0; i < sURLVariables.length; i++) 
+			    {
+			        var sParameterName = sURLVariables[i].split('=');
+			        if (sParameterName[0] == sParam) 
+			        {
+			            return sParameterName[1];
+			        }
+			    }
+			}
+			$(function(){
+				var action = getUrlParameter('action');
+				if (action == 'editar'){
+					var tela = getUrlParameter('tela');
+					var servico = "http://www.manualdosnoivos.com.br/rest/telas/tela/" + tela;
+					$.getJSON(servico, function(data){
+					  	  $("#nome").text(tela.nome);
+					  	  $("#conteudo").text(tela.conteudo);
+					  	  $("#submit").val("Alterar");
+					});
+				}
+			});
+		</script>
+	    <title>Admin tela - manualdosnoivos</title>
+	    <link rel="stylesheet" type="text/css" href="lib/docs.css"/></link>
 	    <style type="text/css">
 	      .CodeMirror-line-numbers {
 	        width: 2.2em;
@@ -21,26 +48,15 @@
 	<body>
 		<h1>Criando Tela JAX-RS @FormParam</h1>
 		<form action="rest/telas/tela" method="post">
-			<p>Tela : <input type="text" name="nome" /></p>
-			<p>Senha : <input type="password" name="senha" /></p>
+			<p>Tela : <input type="text" name="nome" id="nome"></input></p>
+			<p>Senha : <input type="password" name="senha"></input></p>
 			<div style='border-top: 1px solid black; border-bottom: 1px solid black;'>
-				<textarea id="code" cols="120" rows="40" name="conteudo">
-&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
-  &lt;!-- this is a comment --&gt;
-  &lt;head&gt;
-    &lt;title&gt;HTML Example&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;HTML Example&lt;/h1&gt;
-    Bla bla bla bla
-  &lt;/body&gt;
-&lt;/html&gt;
-					</textarea>
+				<textarea id="conteudo" cols="120" rows="40" name="conteudo"></textarea>
 			</div>
-			<input type="submit" value="Adiciona" />
+			<input type="submit" value="Adiciona" id="submit"></input>
 		</form>
 		<script type="text/javascript">
-		  var editor = CodeMirror.fromTextArea('code', {
+		  var editor = CodeMirror.fromTextArea('conteudo', {
 		    height: "350px",
 		    parserfile: "parsexml.js",
 		    stylesheet: "lib/xmlcolors.css",
