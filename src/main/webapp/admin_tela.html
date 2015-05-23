@@ -22,8 +22,8 @@
 					var tela = getUrlParameter('tela');
 					var servico = "http://www.manualdosnoivos.com.br/rest/telas/tela/" + tela;
 					$.getJSON(servico, function(data){
-					  	  $("#nome").text(tela.nome);
-					  	  $("#conteudo").text(tela.conteudo);
+					  	  $("#nome").val(data.nome);
+					  	  $("#conteudo").val(data.conteudo);
 					  	  $("#submit").val("Alterar");
 					});
 				}
