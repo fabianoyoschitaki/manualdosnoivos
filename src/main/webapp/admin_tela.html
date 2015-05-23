@@ -4,6 +4,10 @@
 		<script src="lib/codemirror.js" type="text/javascript"></script>
 		<script src="script/jquery-1.11.2.min.js"></script>
 		<script>
+			
+			/**
+			 * function para pegar parâmetro da url
+			 */
 			function getUrlParameter(sParam){
 			    var sPageURL = window.location.search.substring(1);
 			    var sURLVariables = sPageURL.split('&');
@@ -16,18 +20,11 @@
 			        }
 			    }
 			}
-			$(function(){
-				var action = getUrlParameter('action');
-				if (action == 'editar'){
-					var tela = getUrlParameter('tela');
-					var servico = "http://www.manualdosnoivos.com.br/rest/telas/tela/" + tela;
-					$.getJSON(servico, function(data){
-					  	  $("#nome").val(data.nome);
-					  	  $("#conteudo").text(data.conteudo);
-					  	  $("#submit").val("Alterar");
-					});
-				}
-				
+			
+			/**
+			 * function para aplicar o code mirror
+			 */
+			function beautify(){
 				var editor = CodeMirror.fromTextArea('conteudo', {
 				    height: "350px",
 				    parserfile: "parsexml.js",
@@ -35,7 +32,29 @@
 				    path: "lib/",
 				    continuousScanning: 500,
 				    lineNumbers: true
-				  });
+				});
+			}
+			
+			/**
+			 * function para carregar conteúdo da tela
+			 */
+			function carregaTela(tela, callback){
+				var servico = "http://www.manualdosnoivos.com.br/rest/telas/tela/" + tela;
+				$.getJSON(servico, function(data){
+				  	  $("#nome").val(data.nome);
+				  	  $("#conteudo").text(data.conteudo);
+				  	  $("#submit").val("Alterar");
+				});
+				callback();
+			}
+			
+			$(function(){
+				var action = getUrlParameter('action');
+				if (action == 'editar'){
+					carregaTela(getUrlParameter('tela'), beautify);
+				} else {
+					beautify();
+				}
 			});
 		</script>
 	    <title>Admin tela - manualdosnoivos</title>
@@ -70,8 +89,8 @@
     &lt;h1&gt;HTML Example&lt;/h1&gt;
     Bla bla bla bla
   &lt;/body&gt;
-&lt;/html&gt;
 				</textarea>
+&lt;/html&gt;
 			</div>
 			<input type="submit" value="Adiciona" id="submit"></input>
 		</form>
