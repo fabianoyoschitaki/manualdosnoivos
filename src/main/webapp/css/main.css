@@ -2,3 +2,30 @@
 	font-size:32px;
 	color:red;
 }
+
+#bg {
+	height: 700px;
+	-webkit-background-size: 100% auto;
+	-moz-background-size: 100% auto;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-box-shadow: rgba(0,0,0,0.20) 0 10px 10px;
+	-moz-box-shadow: rgba(0,0,0,0.20) 0 10px 10px;
+	box-shadow: rgba(0,0,0,0.20) 0 10px 10px;
+}
+
+#bg h1 {
+	color: white;
+	font-weight: bold;
+	text-shadow: 1px 4px 10px black;
+}
+
+#bg button {
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.header {
+	background-image: url("../images/bg-1.jpg");
+}
